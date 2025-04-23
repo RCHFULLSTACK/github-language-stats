@@ -7,6 +7,22 @@ import time
 # Konfigurera sidan
 st.set_page_config(page_title="GitHub Språktracker", page_icon="📊", layout="wide")
 
+# Lägg till CSS för bakgrundsfärg
+st.markdown("""
+<style>
+    .main {
+        background-color: #0E5287;
+        color: white;
+    }
+    h1, h2, h3, h4 {
+        color: white;
+    }
+    .stDataFrame div {
+        color: black;
+    }
+</style>
+""", unsafe_allow_html=True)
+
 # Titelsektionen
 st.title("📊 Populära Programmeringsspråk")
 st.markdown("Utforska trender inom programmeringsspråk baserat på GitHub-data")
@@ -46,6 +62,9 @@ def get_language_stats():
 def load_github_data():
     return get_language_stats()
 
+# Använd mörkt tema för diagram
+plt.style.use('dark_background')
+
 # Ladda data
 try:
     df = load_github_data()
@@ -56,18 +75,20 @@ try:
     with col1:
         st.subheader("Antal Stjärnor per språk")
         fig, ax = plt.subplots(figsize=(10, 6))
-        bars = ax.bar(df['language'], df['stars'], color='skyblue')
-        plt.xticks(rotation=45, ha='right')
-        plt.ylabel('Antal stjärnor')
+        bars = ax.bar(df['language'], df['stars'], color='#36A2EB')
+        plt.xticks(rotation=45, ha='right', color='white')
+        plt.ylabel('Antal stjärnor', color='white')
+        ax.tick_params(colors='white')
         plt.tight_layout()
         st.pyplot(fig)
     
     with col2:
         st.subheader("Genomsnittligt antal stjärnor per repository")
         fig, ax = plt.subplots(figsize=(10, 6))
-        bars = ax.bar(df['language'], df['avg_stars'], color='lightgreen')
-        plt.xticks(rotation=45, ha='right')
-        plt.ylabel('Genomsnittligt antal stjärnor')
+        bars = ax.bar(df['language'], df['avg_stars'], color='#4BC0C0')
+        plt.xticks(rotation=45, ha='right', color='white')
+        plt.ylabel('Genomsnittligt antal stjärnor', color='white')
+        ax.tick_params(colors='white')
         plt.tight_layout()
         st.pyplot(fig)
     
