@@ -7,8 +7,8 @@ This Streamlit application provides real-time insights into the popularity of pr
 
 
 ## Tech Stack
-Python: Core programming language
-Streamlit: Web application framework for data visualization
-GitHub API: Data source for repository statistics
-Pandas: Data manipulation and analysis
-Matplotlib: Visualization library
+- Python: Core programming language
+- Streamlit: Web application framework for data visualization
+- GitHub API: Data source for repository statistics
+- Pandas: Data manipulation and analysis
+- Matplotlib: Visualization library
